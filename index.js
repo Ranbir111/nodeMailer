@@ -5,7 +5,7 @@ var nodemailer = require('nodemailer');
 const port = 3000;
 app.use(bodyParser.json());
 
-app.get('/sendmail', (req, res) => {
+app.post('/sendmail', (req, res) => {
     const emailFrom = req.body.emailFrm;
     const password = req.body.pass;
     const emailTo = req.body.emailTo;
