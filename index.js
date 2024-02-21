@@ -2,8 +2,11 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
+const cors = require('cors');
 const port = 3000;
+
 app.use(bodyParser.json());
+app.use(cors());
 
 app.post('/sendmail', (req, res) => {
     const emailFrom = req.body.emailFrm;
