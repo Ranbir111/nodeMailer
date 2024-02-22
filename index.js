@@ -14,6 +14,7 @@ app.post('/sendmail', (req, res) => {
     const emailTo = req.body.emailTo;
     const sub = req.body.sub;
     const message = req.body.msg;
+    const sendername = req.body.sendername;
 
     try {
         var transporter = nodemailer.createTransport({
@@ -25,7 +26,7 @@ app.post('/sendmail', (req, res) => {
         });
 
         var mailOptions = {
-            from: emailFrom,
+            from: sendername,
             to: emailTo,
             subject: sub,
             text: message
