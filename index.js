@@ -26,7 +26,7 @@ app.post('/sendmail', (req, res) => {
         });
 
         var mailOptions = {
-            from: sendername,
+            from: sendername+" - "+emailFrom,
             to: emailTo,
             subject: sub,
             text: message
