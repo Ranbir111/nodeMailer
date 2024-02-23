@@ -3,18 +3,19 @@ const app = express();
 const bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
 const cors = require('cors');
-const port = 3000;
+const port = 5000;
 
 app.use(bodyParser.json());
+app.use(express.json());
 app.use(cors());
 
-app.post('/sendmail', (req, res) => {
-    const emailFrom = req.body.emailFrm;
-    const password = req.body.pass;
-    const emailTo = req.body.emailTo;
-    const sub = req.body.sub;
-    const message = req.body.msg;
-    const sendername = req.body.sendername;
+app.post('/sendmail', async (req, res) => {
+    const emailFrom = await req.body.emailFrm;
+    const password = await req.body.pass;
+    const emailTo = await req.body.emailTo;
+    const sub = await req.body.sub;
+    const message = await req.body.msg;
+    const sendername = await req.body.sendername;
 
     try {
         var transporter = nodemailer.createTransport({
@@ -26,7 +27,7 @@ app.post('/sendmail', (req, res) => {
         });
 
         var mailOptions = {
-            from: sendername+" - "+emailFrom,
+            from: sendername + " - " + emailFrom,
             to: emailTo,
             subject: sub,
             text: message
