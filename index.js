@@ -30,7 +30,7 @@ app.post('/sendmail', async (req, res) => {
             from: sendername + " - " + emailFrom,
             to: emailTo,
             subject: sub,
-            text: message
+            html: message,
         };
 
         transporter.sendMail(mailOptions, function (error, info) {
